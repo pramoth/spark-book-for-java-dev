@@ -9,6 +9,7 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 3. [Chapter 3 — RDD, DataFrame, Dataset](03-rdd-dataframe-dataset.md)
 4. [Chapter 4 — Spark Use Cases](04-use-cases.md)
 5. [Chapter 5 — Ecosystem & Deployment](05-ecosystem-and-deployment.md)
+6. [Chapter 6 — Docker Hands-On](06-docker-hands-on.md)
 
 ## Appendices (side discussions)
 
@@ -23,9 +24,15 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 - [A9 — Apache Arrow](a9-apache-arrow.md)
 - [A10 — Why DuckDB ↔ pandas is suddenly fast](a10-duckdb-pandas-fast.md)
 - [A11 — Why convert DuckDB to pandas at all?](a11-stay-in-duckdb.md)
+- [A12 — Job, Stage, Task: the three-level hierarchy](a12-job-stage-task.md)
+- [A13 — Mapping code to stages](a13-code-to-stage.md)
+- [A14 — Shuffle reuse, skipped stages, and cache()](a14-shuffle-reuse-cache.md)
+
+## Hands-on lab
+
+- [spark-lab/](spark-lab/) — working docker-compose cluster and the annotated `wordcount.py` used in Chapter 6.
 
 ## Planned (not yet covered)
 
-- Chapter 6 — Docker hands-on setup
-- Chapter 7 — Open-source alternatives (Flink, Trino, DuckDB, Dask, Ray, Beam)
+- Chapter 7 — Open-source alternatives (Flink, Trino, Dask, Ray, Beam)
 - Chapter 8 — Client-conversation cheat sheet
