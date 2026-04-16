@@ -38,10 +38,12 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
   - Script: [spark-lab/jobs/lab2_delta.py](spark-lab/jobs/lab2_delta.py)
 - [Lab 3 — Medallion architecture](lab3-medallion-architecture.md) — Bronze → Silver → Gold pipeline with messy data
   - Script: [spark-lab/jobs/lab3_medallion.py](spark-lab/jobs/lab3_medallion.py)
-- [Playground — Interactive PySpark REPL](lab-playground.md) — explore all lab tables interactively with SQL and Python
+- [Lab 4 — Iceberg side-by-side](lab4-iceberg-side-by-side.md) — same ops as Lab 2, Iceberg vs Delta comparison
+  - Script: [spark-lab/jobs/lab4_iceberg.py](spark-lab/jobs/lab4_iceberg.py)
+- [Playground — Interactive PySpark REPL](lab-playground.md) — explore all lab tables with `./repl.sh`
+  - Script: [spark-lab/repl.sh](spark-lab/repl.sh) — one command, loads both Delta + Iceberg
 
 ## Planned labs
 
-- Lab 4 — Apache Iceberg side-by-side
 - Lab 5 — Streaming into the lakehouse (Kafka → Spark → Delta)
 - Lab 6 — Trino reads the lakehouse (Spark writes, Trino queries)

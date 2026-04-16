@@ -1,8 +1,17 @@
 # Lab Playground — Interactive PySpark REPL
 
-Launch an interactive PySpark shell connected to your Docker cluster with Delta Lake loaded. All tables from Lab 2 and Lab 3 are accessible.
+Launch an interactive PySpark shell connected to your Docker cluster with **both Delta Lake and Iceberg** loaded. All tables from Lab 2, 3, and 4 are accessible in one session.
 
 ## Launch the playground
+
+The easiest way — use the shell script:
+
+```bash
+cd /Users/pramoth/work/tmp/spark-book/spark-lab
+./repl.sh
+```
+
+Or run the full command manually:
 
 ```bash
 cd /Users/pramoth/work/tmp/spark-book/spark-lab
@@ -10,12 +19,16 @@ cd /Users/pramoth/work/tmp/spark-book/spark-lab
 docker run --rm -it \
   --network spark-lab_spark-net \
   -v $(pwd)/delta-data:/delta-data \
+  -v $(pwd)/jobs:/jobs \
   apache/spark:3.5.1 \
   /opt/spark/bin/pyspark \
     --master spark://spark-master:7077 \
-    --packages io.delta:delta-spark_2.12:3.1.0 \
-    --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
+    --packages io.delta:delta-spark_2.12:3.1.0,org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.5.0 \
+    --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension,org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
     --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog \
+    --conf spark.sql.catalog.local=org.apache.iceberg.spark.SparkCatalog \
+    --conf spark.sql.catalog.local.type=hadoop \
+    --conf spark.sql.catalog.local.warehouse=/delta-data/iceberg-warehouse \
     --conf spark.jars.ivy=/tmp/.ivy2
 ```
 
@@ -30,6 +43,7 @@ You get a `>>>` prompt. Type Python/SQL interactively. Results appear instantly.
 | `/delta-data/silver/orders` | Lab 3 — 13 clean rows (deduplicated, validated) |
 | `/delta-data/gold/daily_revenue` | Lab 3 — revenue aggregated by date + region |
 | `/delta-data/gold/product_summary` | Lab 3 — revenue aggregated by product |
+| `local.db.sales` (Iceberg catalog) | Lab 4 — Iceberg sales table |
 
 ## Things to try
 
@@ -146,6 +160,22 @@ my_gold.show()
 
 # Save it as a new Gold table
 my_gold.write.format("delta").mode("overwrite").save("/delta-data/gold/region_spend")
+```
+
+### Query Iceberg tables (Lab 4)
+
+```python
+# Iceberg uses catalog names, not file paths
+spark.sql("SELECT * FROM local.db.sales").show()
+
+# Iceberg metadata tables — query them like regular tables
+spark.sql("SELECT snapshot_id, committed_at, operation FROM local.db.sales.snapshots").show()
+spark.sql("SELECT file_path, record_count FROM local.db.sales.files").show()
+
+# Time travel with snapshot ID
+spark.sql("SELECT snapshot_id FROM local.db.sales.snapshots ORDER BY committed_at").show()
+# then:
+spark.sql("SELECT * FROM local.db.sales VERSION AS OF <snapshot_id>").show()
 ```
 
 ### Compare Bronze vs Silver (see what cleaning did)
