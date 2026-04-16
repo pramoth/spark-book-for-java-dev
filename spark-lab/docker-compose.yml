@@ -97,6 +97,20 @@ services:
     networks:
       - spark-net
 
+  # --- Trino (for Lab 6: SQL query engine on the lakehouse) ---
+
+  trino:
+    image: trinodb/trino:439
+    container_name: trino
+    hostname: trino
+    ports:
+      - "18081:8080"    # Trino web UI + query endpoint
+    volumes:
+      - ./delta-data:/delta-data
+      - ./trino-config/catalog:/etc/trino/catalog
+    networks:
+      - spark-net
+
 networks:
   spark-net:
     driver: bridge

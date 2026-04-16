@@ -46,6 +46,5 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 - [Lab 5 — Kafka streaming](lab5-kafka-streaming.md) — Kafka → Spark Structured Streaming → Delta
   - Scripts: [lab5_producer.py](spark-lab/jobs/lab5_producer.py), [lab5_streaming.py](spark-lab/jobs/lab5_streaming.py)
 
-## Planned labs
-
-- Lab 6 — Trino reads the lakehouse (Spark writes, Trino queries)
+- [Lab 6 — Trino reads the lakehouse](lab6-trino-reads-lakehouse.md) — Spark writes, Trino queries the same Delta tables
+  - Config: [trino-config/catalog/delta.properties](spark-lab/trino-config/catalog/delta.properties)
