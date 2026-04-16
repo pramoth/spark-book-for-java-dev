@@ -7,6 +7,8 @@ services:
     ports:
       - "18080:8080"
       - "7077:7077"
+    volumes:
+      - ./delta-data:/delta-data
     networks:
       - spark-net
 
@@ -19,6 +21,8 @@ services:
     command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "--cores", "2", "--memory", "1g", "--webui-port", "8081", "spark://spark-master:7077"]
     ports:
       - "8081:8081"
+    volumes:
+      - ./delta-data:/delta-data
     networks:
       - spark-net
 
@@ -31,6 +35,8 @@ services:
     command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "--cores", "2", "--memory", "1g", "--webui-port", "8081", "spark://spark-master:7077"]
     ports:
       - "8082:8081"
+    volumes:
+      - ./delta-data:/delta-data
     networks:
       - spark-net
 

@@ -29,11 +29,17 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 - [A12 — Job, Stage, Task: the three-level hierarchy](a12-job-stage-task.md)
 - [A13 — Mapping code to stages](a13-code-to-stage.md)
 - [A14 — Shuffle reuse, skipped stages, and cache()](a14-shuffle-reuse-cache.md)
+- [A15 — Data Lake vs Delta Lake (the naming confusion)](a15-data-lake-vs-delta-lake.md)
 
-## Hands-on lab
+## Hands-on labs
 
-- [spark-lab/](spark-lab/) — working docker-compose cluster and the annotated `wordcount.py` used in Chapter 6.
+- [Lab 1 — spark-lab/](spark-lab/) — Docker cluster + wordcount (Chapter 6)
+- [Lab 2 — Delta Lake basics](lab2-delta-lake-basics.md) — CRUD, time travel, schema enforcement, VACUUM
+  - Script: [spark-lab/jobs/lab2_delta.py](spark-lab/jobs/lab2_delta.py)
 
-## Status
+## Planned labs
 
-All 8 chapters and 14 appendices complete.
+- Lab 3 — Medallion architecture (Bronze → Silver → Gold)
+- Lab 4 — Apache Iceberg side-by-side
+- Lab 5 — Streaming into the lakehouse (Kafka → Spark → Delta)
+- Lab 6 — Trino reads the lakehouse (Spark writes, Trino queries)
