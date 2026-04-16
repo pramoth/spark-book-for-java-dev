@@ -43,7 +43,9 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 - [Playground — Interactive PySpark REPL](lab-playground.md) — explore all lab tables with `./repl.sh`
   - Script: [spark-lab/repl.sh](spark-lab/repl.sh) — one command, loads both Delta + Iceberg
 
+- [Lab 5 — Kafka streaming](lab5-kafka-streaming.md) — Kafka → Spark Structured Streaming → Delta
+  - Scripts: [lab5_producer.py](spark-lab/jobs/lab5_producer.py), [lab5_streaming.py](spark-lab/jobs/lab5_streaming.py)
+
 ## Planned labs
 
-- Lab 5 — Streaming into the lakehouse (Kafka → Spark → Delta)
 - Lab 6 — Trino reads the lakehouse (Spark writes, Trino queries)
