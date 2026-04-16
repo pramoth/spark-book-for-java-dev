@@ -10,6 +10,8 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 4. [Chapter 4 — Spark Use Cases](04-use-cases.md)
 5. [Chapter 5 — Ecosystem & Deployment](05-ecosystem-and-deployment.md)
 6. [Chapter 6 — Docker Hands-On](06-docker-hands-on.md)
+7. [Chapter 7 — Open-Source Alternatives](07-open-source-alternatives.md)
+8. [Chapter 8 — Client-Conversation Cheat Sheet](08-client-cheat-sheet.md)
 
 ## Appendices (side discussions)
 
@@ -32,7 +34,6 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 
 - [spark-lab/](spark-lab/) — working docker-compose cluster and the annotated `wordcount.py` used in Chapter 6.
 
-## Planned (not yet covered)
+## Status
 
-- Chapter 7 — Open-source alternatives (Flink, Trino, Dask, Ray, Beam)
-- Chapter 8 — Client-conversation cheat sheet
+All 8 chapters and 14 appendices complete.
