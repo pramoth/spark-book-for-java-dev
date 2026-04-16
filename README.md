@@ -36,10 +36,12 @@ A conversational walkthrough of Apache Spark for a Java developer who needs conc
 - [Lab 1 — spark-lab/](spark-lab/) — Docker cluster + wordcount (Chapter 6)
 - [Lab 2 — Delta Lake basics](lab2-delta-lake-basics.md) — CRUD, time travel, schema enforcement, VACUUM
   - Script: [spark-lab/jobs/lab2_delta.py](spark-lab/jobs/lab2_delta.py)
+- [Lab 3 — Medallion architecture](lab3-medallion-architecture.md) — Bronze → Silver → Gold pipeline with messy data
+  - Script: [spark-lab/jobs/lab3_medallion.py](spark-lab/jobs/lab3_medallion.py)
+- [Playground — Interactive PySpark REPL](lab-playground.md) — explore all lab tables interactively with SQL and Python
 
 ## Planned labs
 
-- Lab 3 — Medallion architecture (Bronze → Silver → Gold)
 - Lab 4 — Apache Iceberg side-by-side
 - Lab 5 — Streaming into the lakehouse (Kafka → Spark → Delta)
 - Lab 6 — Trino reads the lakehouse (Spark writes, Trino queries)
