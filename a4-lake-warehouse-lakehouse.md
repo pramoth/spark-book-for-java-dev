@@ -73,6 +73,41 @@ These formats add a **transaction log** — small metadata files tracking *"whic
 
 Physically, it's still just files in S3. The lakehouse is what the table format **makes of** those files.
 
+## 4. Data Mart (a subset, not a separate thing)
+
+A **data mart** is a focused slice of a warehouse (or lakehouse) scoped to **one business unit** — Sales, Finance, Marketing, HR.
+
+- **Narrow scope** — one domain, not the whole enterprise.
+- **Smaller & faster** — less data, simpler queries.
+- **Business-user shaped** — modeled around how that team thinks (e.g. *"monthly revenue by region"*).
+- **Usually dimensional** — star/snowflake schemas (fact + dimensions).
+
+### Warehouse vs Mart
+
+| | Warehouse | Data Mart |
+|---|---|---|
+| **Scope** | Enterprise-wide | Single department |
+| **Users** | Analysts across org | Business users in one team |
+| **Size** | TB | GB–low TB |
+| **Built from** | Source systems | Warehouse (or sources directly) |
+
+### Two build styles
+
+1. **Dependent mart** — carved out of an existing warehouse. *Top-down, Inmon style.*
+2. **Independent mart** — built straight from sources, integrated into a warehouse later. *Bottom-up, Kimball style.*
+
+### Where it fits in the lakehouse / medallion model
+
+In the **bronze → silver → gold** pattern used in later labs:
+
+- **Bronze** — raw ingestion
+- **Silver** — cleaned, conformed
+- **Gold** — business-level aggregates → **this *is* the data mart**
+
+In a modern lakehouse, a data mart is usually just a **curated gold table** (Delta/Iceberg) exposed to a specific BI tool or team. No separate physical system needed — Trino or Spark queries the same storage.
+
+> **The shift:** marts used to be copied into their own databases. In a lakehouse, a mart is just a *view of curated tables* on the same cheap S3 storage.
+
 ## Side-by-side
 
 | | Warehouse | Data Lake | Lakehouse |
